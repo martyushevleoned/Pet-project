@@ -17,6 +17,7 @@ public class Project {
     public Project(String name, User user) {
         this.name = name;
         this.user = user;
+        this.creationTime = new Date();
     }
 
     @Id

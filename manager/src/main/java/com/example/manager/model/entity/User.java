@@ -13,8 +13,7 @@ import java.util.List;
 @Getter
 public class User {
 
-    public User(Long id, String mail, String username, String password) {
-        this.id = id;
+    public User(String mail, String username, String password) {
         this.mail = mail;
         this.username = username;
         this.password = password;

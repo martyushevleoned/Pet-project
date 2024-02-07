@@ -18,6 +18,7 @@ public class Task {
         this.title = title;
         this.description = description;
         this.project = project;
+        this.creationTime = new Date();
     }
 
     public Task(String title, String description, Project project, Task parentTask) {
@@ -25,6 +26,7 @@ public class Task {
         this.description = description;
         this.project = project;
         this.parentTask = parentTask;
+        this.creationTime = new Date();
     }
 
     @Id
