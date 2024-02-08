@@ -34,6 +34,6 @@ public class Project {
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "usr_prj_fk"), nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "project", orphanRemoval = true)
+    @OneToMany(mappedBy = "project", orphanRemoval = true, fetch = FetchType.EAGER)
     List<Task> tasks = new ArrayList<>();
 }

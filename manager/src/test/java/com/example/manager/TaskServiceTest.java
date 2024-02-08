@@ -1,5 +1,6 @@
 package com.example.manager;
 
+import com.example.manager.model.dto.TaskDto;
 import com.example.manager.model.entity.Project;
 import com.example.manager.model.entity.Task;
 import com.example.manager.model.entity.User;
@@ -13,6 +14,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,8 +32,8 @@ public class TaskServiceTest {
     private TaskRepository taskRepository;
 
     @Before
-    public void setUp(){
-        userRepository.save(new User("mail","username","password"));
+    public void setUp() {
+        userRepository.save(new User("mail", "username", "password"));
 
         projectRepository.save(new Project("project1", userRepository.findByMail("mail")));
         projectRepository.save(new Project("project2", userRepository.findByMail("mail")));
@@ -47,10 +51,30 @@ public class TaskServiceTest {
 
         Project project = projectRepository.findProjectByName("project1");
         System.out.println(project.getName());
+
+        project.getTasks().forEach(t -> {
+            System.out.println(taskToTaskDto(t));
+        });
+    }
+
+    private TaskDto taskToTaskDto(Task task) {
+
+        List<TaskDto> subTaskDto = new ArrayList<>();
+        task.getSubTasks().forEach(t -> {
+            subTaskDto.add(taskToTaskDto(t));
+        });
+
+        return new TaskDto(
+                task.getId(),
+                task.getTitle(),
+                task.getDescription(),
+                task.getCreationTime(),
+                subTaskDto
+        );
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         userRepository.deleteAll();
     }
 }

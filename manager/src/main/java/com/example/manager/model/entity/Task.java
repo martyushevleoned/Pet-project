@@ -42,8 +42,8 @@ public class Task {
     @Column(columnDefinition = "timestamp default current_timestamp", nullable = false)
     private Date creationTime;
 
-    @OneToMany(mappedBy = "parentTask", orphanRemoval = true)
-    List<Task> tasks = new ArrayList<>();
+    @OneToMany(mappedBy = "parentTask", orphanRemoval = true, fetch = FetchType.EAGER)
+    List<Task> subTasks = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "project_id", foreignKey = @ForeignKey(name = "prj_tsk_fk"), nullable = false)
