@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     @Autowired
-    private UserDetailsConfig userDetailsConfig;
+    private CustomUserDetails customUserDetails;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -38,6 +38,6 @@ public class WebSecurityConfig {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsConfig).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(customUserDetails).passwordEncoder(passwordEncoder);
     }
 }

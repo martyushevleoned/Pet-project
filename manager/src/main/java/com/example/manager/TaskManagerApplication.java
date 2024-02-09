@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class TaskManagerApplication implements CommandLineRunner {
@@ -27,13 +28,17 @@ public class TaskManagerApplication implements CommandLineRunner {
 	@Autowired
 	private TaskRepository taskRepository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 
 	@Override
-	public void run(String... args) throws Exception {
-		userRepository.save(new User("mail", "username", "password"));
+	public void run(String... args) {
 
-		projectRepository.save(new Project("project1", userRepository.findByMail("mail")));
-		projectRepository.save(new Project("project2", userRepository.findByMail("mail")));
+		userRepository.save(new User("123", "username", passwordEncoder.encode("123")));
+
+		projectRepository.save(new Project("project1", userRepository.findByMail("123")));
+		projectRepository.save(new Project("project2", userRepository.findByMail("123")));
 
 		taskRepository.save(new Task("main task1", "", projectRepository.findProjectByName("project1")));
 		taskRepository.save(new Task("main task2", "", projectRepository.findProjectByName("project1")));

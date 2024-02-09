@@ -15,7 +15,7 @@ public class DefaultController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping("/")
+    @GetMapping("/profile")
     @ResponseBody
     private ResponseEntity<Iterable<TaskDto>> getSomeTest(){
         return ResponseEntity.status(HttpStatus.OK).body(taskService.getTaskDtoByProjectId(1L));
