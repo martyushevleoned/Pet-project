@@ -16,8 +16,8 @@ import java.util.List;
 @Getter
 public class User implements UserDetails {
 
-    public User(String mail, String username, String password) {
-        this.mail = mail;
+    public User(String email, String username, String password) {
+        this.email = email;
         this.username = username;
         this.password = password;
     }
@@ -27,9 +27,9 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(columnDefinition = "text", unique = true, nullable = false)
-    private String mail;
+    private String email;
 
-    @Column(columnDefinition = "text", nullable = false)
+    @Column(columnDefinition = "text", unique = true, nullable = false)
     private String username;
 
     @Column(columnDefinition = "text", nullable = false)
