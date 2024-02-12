@@ -35,7 +35,7 @@ public class User implements UserDetails {
     @Column(columnDefinition = "text", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.EAGER)
     List<Project> projects = new ArrayList<>();
 
     @Override

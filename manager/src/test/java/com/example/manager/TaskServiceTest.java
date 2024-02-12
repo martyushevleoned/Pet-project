@@ -35,8 +35,8 @@ public class TaskServiceTest {
     public void setUp() {
         userRepository.save(new User("mail", "username", "password"));
 
-        projectRepository.save(new Project("project1", userRepository.findByMail("mail")));
-        projectRepository.save(new Project("project2", userRepository.findByMail("mail")));
+        projectRepository.save(new Project("project1", userRepository.findByEmail("mail")));
+        projectRepository.save(new Project("project2", userRepository.findByEmail("mail")));
 
         taskRepository.save(new Task("main task1", "", projectRepository.findProjectByName("project1")));
         taskRepository.save(new Task("main task2", "", projectRepository.findProjectByName("project1")));
@@ -46,7 +46,7 @@ public class TaskServiceTest {
 
     @Test
     public void name() {
-        User user = userRepository.findByMail("mail");
+        User user = userRepository.findByEmail("mail");
         System.out.println(user.getId());
 
         Project project = projectRepository.findProjectByName("project1");

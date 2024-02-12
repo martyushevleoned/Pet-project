@@ -35,10 +35,10 @@ public class TaskManagerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) {
 
-		userRepository.save(new User("123", "username", passwordEncoder.encode("123")));
+		userRepository.save(new User("email", "username", passwordEncoder.encode("password")));
 
-		projectRepository.save(new Project("project1", userRepository.findByMail("123")));
-		projectRepository.save(new Project("project2", userRepository.findByMail("123")));
+		projectRepository.save(new Project("project1", userRepository.findByEmail("email")));
+		projectRepository.save(new Project("project2", userRepository.findByEmail("email")));
 
 		taskRepository.save(new Task("main task1", "", projectRepository.findProjectByName("project1")));
 		taskRepository.save(new Task("main task2", "", projectRepository.findProjectByName("project1")));
