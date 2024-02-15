@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "group_of_tasks")
+@Table(name = "group_of_tags")
 @NoArgsConstructor
 @Getter
 public class GroupOfTags {

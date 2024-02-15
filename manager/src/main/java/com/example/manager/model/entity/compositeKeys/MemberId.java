@@ -6,27 +6,26 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class TaskTagId implements Serializable {
+public class MemberId implements Serializable {
 
-    private Long task;
+    private Long user;
 
-    private Long tag;
+    private Long project;
 
     @Override
     public boolean equals(Object obj) {
         if (obj == this)
             return true;
-        if (!(obj instanceof TaskTagId taskTagId))
+        if (!(obj instanceof MemberId memberId))
             return false;
-        return task.equals(taskTagId.getTask()) && tag.equals(taskTagId.getTag());
+        return project.equals(memberId.getProject()) && user.equals(memberId.getUser());
     }
 
     @Override
     public int hashCode() {
-        return (int) (17 * task + 31 * tag);
+        return (int) (17 * project + 31 * user);
     }
 }

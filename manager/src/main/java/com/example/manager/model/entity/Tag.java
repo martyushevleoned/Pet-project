@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tags")
 @NoArgsConstructor
@@ -25,4 +28,6 @@ public class Tag {
     private GroupOfTags groupOfTags;
 
 
+    @OneToMany(mappedBy = "tag", orphanRemoval = true, fetch = FetchType.EAGER)
+    List<TaskTag> taskTags = new ArrayList<>();
 }

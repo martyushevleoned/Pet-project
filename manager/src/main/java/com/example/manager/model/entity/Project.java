@@ -39,4 +39,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project", orphanRemoval = true, fetch = FetchType.EAGER)
     List<GroupOfTags> groupOfTags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "project", orphanRemoval = true, fetch = FetchType.EAGER)
+    List<Member> members = new ArrayList<>();
 }

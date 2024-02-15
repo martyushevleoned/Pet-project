@@ -45,6 +45,9 @@ public class Task {
     @OneToMany(mappedBy = "parentTask", orphanRemoval = true, fetch = FetchType.EAGER)
     List<Task> subTasks = new ArrayList<>();
 
+    @OneToMany(mappedBy = "task", orphanRemoval = true, fetch = FetchType.EAGER)
+    List<TaskTag> taskTags = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "project_id", foreignKey = @ForeignKey(name = "prj_tsk_fk"), nullable = false)
     private Project project;
