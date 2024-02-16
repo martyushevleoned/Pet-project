@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
         );
     }
 
-    public void CreateNewUser(User user) {
+    public void createNewUser(User user) {
         if (findByUsername(user.getUsername()).isEmpty()){
             user.setRoles(Set.of(Role.USER));
             userRepository.save(user);

@@ -16,6 +16,7 @@ import java.util.Set;
 public class User{
 
     public User(String email, String username, String password) {
+        this.email = email;
         this.username = username;
         this.password = password;
     }
@@ -24,6 +25,8 @@ public class User{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(columnDefinition = "text", unique = true, nullable = false)
+    private String email;
 
     @Column(columnDefinition = "text", unique = true, nullable = false)
     private String username;
